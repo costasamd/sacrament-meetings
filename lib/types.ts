@@ -3,6 +3,7 @@ export type MeetingType =
 | 'regular'
 | 'stake'
 | 'general'
+| 'special'
 
 export interface Hymn {
     number: number;

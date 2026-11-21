@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { connection } from "next/server";
-import { getMeetings } from "@/lib/meeting-db";
-
+import { getMeetingByDate } from "@/lib/meeting-db";
+import { Suspense } from "react";
 
 export default async function CurrentMeetingPage() {
 
@@ -11,13 +11,11 @@ export default async function CurrentMeetingPage() {
     const dayOfWeek = today.getDay();
     const sunday = new Date(today);
     sunday.setDate(today.getDate() - dayOfWeek);
-
     const isoSunday = sunday.toISOString().split('T')[0];
-    const matchingMeeting = getMeetings(isoSunday);
+    
+    const meeting = await getMeetingByDate(isoSunday);
 
-    if (matchingMeeting.length > 0) {
-        redirect(`/meetings/${matchingMeeting[0].id}`);
-    }
+    if (meeting) redirect(`/meetings/${meeting.id}`);
 
     redirect('/meetings');
 }
