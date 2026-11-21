@@ -29,7 +29,7 @@ export const MeetingDisplay = ({ meeting}: meetingDetailsProp) => {
             )}
 
             <p className="text-black"><strong>Stake Business: </strong>{meeting.stakeBusiness ? "Stake Business - look at the board" : "No Stake Business"}</p>
-            <p className="text-black"><strong>Ward Business: </strong>{meeting.wardBusiness.length > 0 ? "Check the board" : "No Ward Business"}</p>
+            <p className="text-black"><strong>Ward Business: </strong>{meeting.wardBusiness ? "Stake Business - look at the board" : "No Stake Business"}</p>
             
             <p className="text-black"><strong>Sacrament Hymn: </strong>{meeting.sacramentHymn.number} - {meeting.sacramentHymn.title}</p>
 
